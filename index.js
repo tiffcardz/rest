@@ -64,6 +64,23 @@ app.get("/memo", function(req, res) {
 });
 
 
+// something.com/echo?m=blahblahblah
+// response: you said 'blahblahblah'
+app.get("/echo", function(req, res) {
+
+    var m = req.query.m
+    var n = parseInt(req.query.n)
+
+    var s = "";
+    for(i = 0; i < n ; i++){
+        s = s + m;
+    }
+
+    m = "You said \"" + s + "\"";
+
+    res.send(m);
+    
+});
 
 
   
