@@ -13,15 +13,44 @@ app.get('/', function(request, response) {
     response.send("HELLO MOFO _,/");
 
 
+});
+
+
+
+function pow(a, n) {
+    res = 1;
+    for(var i = 0; i < n; i++){
+        res = res * a; // res *= a
+    }
+
+    return res;
+}
+
+function sum(x, y) {
+    return x + y;
+}
+
+// domain/pow?a=5&n=2 // 25
+app.get("/pow", function(req, res){
+
+    const a= parseInt(req.query.a);
+    const n= parseInt(req.query.n);
+    const power = pow(a,n);
+    
+
+    res.send(power+"");
 
 });
 
 app.get("/add", function(req, res) {
 
+    // blahblah.com/add?a=10&b=20
     const a = parseInt(req.query.a);
     const b = parseInt(req.query.b);
 
-    res.send("Sum of " + a + " and " + b + " = " + (a+b));
+    const result = sum(a, b);
+
+    res.send(result+"");
 
 });
 
